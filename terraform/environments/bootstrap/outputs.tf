@@ -1,4 +1,2 @@
-output "repository_url" {
-  description = "ECR repository URL for Docker push"
-  value       = module.ecr.repository_url
-}
+output "repository_url" { value = module.ecr.repository_url }
+output "repository_name" { value = module.ecr.repository_name }

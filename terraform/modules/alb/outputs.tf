@@ -1,19 +1,6 @@
-output "alb_dns_name" {
-  description = "DNS name of Application Load Balancer"
-  value       = aws_lb.api.dns_name
-}
-
-output "alb_zone_id" {
-  description = "Zone ID of Application Load Balancer"
-  value       = aws_lb.api.zone_id
-}
-
-output "target_group_arn" {
-  description = "ARN of the target group for the Application Load Balancer"
-  value       = aws_lb_target_group.api.arn
-}
-
-output "https_listener_arn" {
-  description = "ARN of the HTTPS listener for the Application Load Balancer"
-  value       = aws_lb_listener.https.arn
-}
+output "alb_dns_name" { value = aws_lb.api.dns_name }
+output "alb_zone_id" { value = aws_lb.api.zone_id }
+output "alb_arn" { value = aws_lb.api.arn }
+output "alb_arn_suffix" { value = aws_lb.api.arn_suffix }
+output "target_group_arn" { value = aws_lb_target_group.api.arn }
+output "https_listener_arn" { value = aws_lb_listener.https.arn }

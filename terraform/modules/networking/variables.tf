@@ -1,18 +1,13 @@
-variable "vpc_cidr" {
-  description = "IPv4 CIDR block for the VPC"
-  type        = string
-}
-
-variable "project_name" {
-  description = "Project name used for resource tag"
-  type        = string
-}
-
+variable "project_name" { type = string }
+variable "vpc_cidr" { type = string }
 variable "subnets" {
-  description = "Subnet configuration for the VPC"
   type = map(object({
     cidr_block        = string
     availability_zone = string
     tier              = string
   }))
+  validation {
+    condition     = alltrue([for s in values(var.subnets) : contains(["public", "app", "db"], s.tier)])
+    error_message = "Each subnet tier must be public, app or db."
+  }
 }

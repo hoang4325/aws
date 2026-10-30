@@ -1,9 +1,6 @@
-variable "api_domain" {
-  description = "Domain name for the ACM certificate"
-  type        = string
-}
-
-variable "hosted_zone_id" {
-  description = "Route 53 hosted zone ID used for DNS validation"
-  type        = string
+variable "api_domain" { type = string }
+variable "wait_for_validation" {
+  description = "Set true after adding ACM CNAME record to external DNS."
+  type        = bool
+  default     = false
 }
