@@ -4,6 +4,7 @@
 *.tfplan
 *.plan
 tfplan
+terraform/environments/dev/sgplan
 crash.log
 crash.*.log
 
