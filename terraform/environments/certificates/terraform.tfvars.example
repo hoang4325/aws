@@ -1,0 +1,2 @@
+api_domain          = "api.example.com"
+wait_for_validation = false

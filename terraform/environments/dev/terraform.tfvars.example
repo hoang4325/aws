@@ -1,4 +1,14 @@
-api_domain     = "api.example.com"
-hosted_zone_id = "REPLACE_WITH_REAL_ZONE_ID"
+# Replace with ACTUAL values; no Route 53 hosted zone is required.
+api_domain         = "api.example.com"
+api_certificate_arn = "arn:aws:acm:ap-southeast-1:123456789012:certificate/REPLACE_ME"
+container_image     = "123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/aws-ecommerce-dev-api:v1"
 
-container_image = "123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/aws-ecommerce-dev-api:v1"
+project_name         = "aws-ecommerce-dev"
+backend_port         = 3000
+desired_count        = 1
+task_cpu             = 256
+task_memory          = 512
+db_instance_class    = "db.t4g.micro"
+db_deletion_protection = true
+db_skip_final_snapshot = false
+alert_email          = ""
