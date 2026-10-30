@@ -23,7 +23,7 @@ variable "backend_port" {
   type        = number
 }
 
-variable "domain_name" {
-  description = "Domain name for the ACM certificate"
+variable "certificate_arn" {
+  description = "ARN of the validated ACM certificate"
   type        = string
 }

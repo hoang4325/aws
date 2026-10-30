@@ -5,6 +5,8 @@
 *.plan
 tfplan
 terraform/environments/dev/sgplan
+terraform.tfvars
+*.auto.tfvars
 crash.log
 crash.*.log
 

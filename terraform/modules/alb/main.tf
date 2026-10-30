@@ -31,21 +31,12 @@ resource "aws_lb_target_group" "api" {
   }
 }
 
-resource "aws_acm_certificate" "api" {
-  domain_name       = var.domain_name
-  validation_method = "DNS"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.api.arn
   port              = 443
   protocol          = "HTTPS"
 
-  certificate_arn = aws_acm_certificate.api.arn
+  certificate_arn = var.certificate_arn
 
   default_action {
     type             = "forward"

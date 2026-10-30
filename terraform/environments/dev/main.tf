@@ -57,8 +57,15 @@ module "alb" {
   public_subnet_ids     = module.networking.public_subnet_ids
   alb_security_group_id = module.security.alb_security_group_id
 
-  backend_port = 3000
-  domain_name  = "hoangdevops.dev"
+  backend_port    = 3000
+  certificate_arn = module.acm.certificate_arn
+}
+
+module "acm" {
+  source = "../../modules/acm"
+
+  api_domain     = var.api_domain
+  hosted_zone_id = var.hosted_zone_id
 }
 
 module "ecs" {
