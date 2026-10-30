@@ -17,8 +17,10 @@ resource "aws_cloudwatch_metric_alarm" "alb_5xx" {
   threshold           = 5
   comparison_operator = "GreaterThanOrEqualToThreshold"
   treat_missing_data  = "notBreaching"
-  dimensions          = { LoadBalancer = var.alb_arn_suffix }
-  alarm_actions       = [aws_sns_topic.alerts.arn]
+  dimensions = {
+    LoadBalancer = var.alb_arn_suffix
+  }
+  alarm_actions = [aws_sns_topic.alerts.arn]
 }
 resource "aws_cloudwatch_metric_alarm" "ecs_cpu" {
   alarm_name          = "${var.project_name}-ecs-cpu"
@@ -46,6 +48,8 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu" {
   threshold           = 80
   comparison_operator = "GreaterThanThreshold"
   treat_missing_data  = "notBreaching"
-  dimensions          = { DBInstanceIdentifier = var.db_identifier }
-  alarm_actions       = [aws_sns_topic.alerts.arn]
+  dimensions = {
+    DBInstanceIdentifier = var.db_identifier
+  }
+  alarm_actions = [aws_sns_topic.alerts.arn]
 }

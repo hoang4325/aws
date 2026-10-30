@@ -2,7 +2,9 @@ resource "aws_security_group" "tier" {
   for_each = toset(["alb", "ecs", "rds"])
   name     = "${var.project_name}-${each.key}-sg"
   vpc_id   = var.vpc_id
-  tags     = { Name = "${var.project_name}-${each.key}-sg" }
+  tags = {
+    Name = "${var.project_name}-${each.key}-sg"
+  }
 }
 # Ingress
 resource "aws_vpc_security_group_ingress_rule" "alb_https" {

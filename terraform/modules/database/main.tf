@@ -1,7 +1,9 @@
 resource "aws_db_subnet_group" "main" {
   name       = "${var.project_name}-db-subnets"
   subnet_ids = var.db_subnet_ids
-  tags       = { Name = "${var.project_name}-db-subnets" }
+  tags = {
+    Name = "${var.project_name}-db-subnets"
+  }
 }
 
 resource "aws_db_instance" "mysql" {
@@ -27,5 +29,7 @@ resource "aws_db_instance" "mysql" {
   skip_final_snapshot       = var.skip_final_snapshot
   final_snapshot_identifier = var.skip_final_snapshot ? null : "${var.project_name}-mysql-final"
   apply_immediately         = false
-  tags                      = { Name = "${var.project_name}-mysql" }
+  tags = {
+    Name = "${var.project_name}-mysql"
+  }
 }

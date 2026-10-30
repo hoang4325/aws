@@ -5,7 +5,9 @@ resource "aws_lb" "api" {
   security_groups            = [var.alb_security_group_id]
   subnets                    = var.public_subnet_ids
   enable_deletion_protection = false # DEV ONLY
-  tags                       = { Name = "${var.project_name}-alb" }
+  tags = {
+    Name = "${var.project_name}-alb"
+  }
 }
 
 resource "aws_lb_target_group" "api" {
