@@ -60,3 +60,14 @@ module "alb" {
   backend_port = 3000
   domain_name  = "hoangdevops.dev"
 }
+
+module "ecs" {
+  source = "../../modules/ecs"
+
+  project_name          = "aws-ecommerce-dev"
+  backend_port          = 3000
+  app_subnet_ids        = module.networking.app_subnet_ids
+  ecs_security_group_id = module.security.ecs_security_group_id
+  target_group_arn      = module.alb.target_group_arn
+  depends_on            = [module.alb]
+}
