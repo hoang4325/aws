@@ -1,9 +1,5 @@
 data "aws_region" "current" {}
 
-data "aws_ecr_repository" "api" {
-  name = "${var.project_name}-api"
-}
-
 resource "aws_ecs_cluster" "main" {
   name = "${var.project_name}-cluster"
 }
@@ -47,7 +43,7 @@ resource "aws_ecs_task_definition" "api" {
   container_definitions = jsonencode([
     {
       name      = "api"
-      image     = var.container_image != "" ? var.container_image : "${data.aws_ecr_repository.api.repository_url}:latest"
+      image     = var.container_image
       essential = true
       portMappings = [
         {

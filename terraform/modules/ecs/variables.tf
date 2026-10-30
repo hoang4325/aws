@@ -16,9 +16,13 @@ variable "task_memory" {
 }
 
 variable "container_image" {
-  description = "Docker image URI used by the ECS task"
+  description = "Full Docker image URI including tag or digest"
   type        = string
-  default     = ""
+
+  validation {
+    condition     = length(trimspace(var.container_image)) > 0
+    error_message = "container_image must not be empty."
+  }
 }
 
 variable "backend_port" {

@@ -77,4 +77,6 @@ module "ecs" {
   ecs_security_group_id = module.security.ecs_security_group_id
   target_group_arn      = module.alb.target_group_arn
   depends_on            = [module.alb]
+
+  container_image = var.container_image
 }
