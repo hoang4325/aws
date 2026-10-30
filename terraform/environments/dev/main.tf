@@ -46,3 +46,11 @@ module "networking" {
 
 #   public_subnet_ids = module.networking.public_subnet_ids
 # }
+
+module "security" {
+  source = "../../modules/security"
+
+  vpc_id       = module.networking.vpc_id
+  project_name = "aws-ecommerce-dev"
+  backend_port = 3000
+}
